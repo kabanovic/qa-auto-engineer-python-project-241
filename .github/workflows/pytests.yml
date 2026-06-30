@@ -27,3 +27,15 @@ jobs:
 
       - name: Run tests
         run: make test
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarcloud-github-action@v3.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=kabanovic_qa-auto-engineer-python-project-241
+            -Dsonar.organization=kabanovic
+            -Dsonar.sources=gendiff
+            -Dsonar.tests=tests
+            -Dsonar.python.coverage.reportPaths=coverage.xml
