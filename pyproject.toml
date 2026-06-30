@@ -33,3 +33,6 @@ line-length = 80
 [tool.ruff.lint]
 preview = true
 select = ["E", "F", "I", "C90"]
+
+[tool.coverage.run]
+relative_files = true
