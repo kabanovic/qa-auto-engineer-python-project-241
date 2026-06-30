@@ -2,7 +2,7 @@ install:
 	uv sync
 
 test:
-	uv run pytest
+	uv run pytest --cov=gendiff --cov-report=xml --cov-report=term
 
 lint:
 	uv run ruff check gendiff tests
