@@ -11,4 +11,4 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kabanovic_qa-auto-engineer-python-project-241&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kabanovic_qa-auto-engineer-python-project-241)
 
 ### Generate_diff
-[![asciicast](https://asciinema.org/a/usREzTookXsxGqWm.svg)](https://asciinema.org/a/usREzTookXsxGqWm)
+[![asciicast](https://asciinema.org/a/TOzDjUmMhG0xmwzl.svg)](https://asciinema.org/a/TOzDjUmMhG0xmwzl)

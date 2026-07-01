@@ -21,3 +21,14 @@ def test_generate_diff_flat_json():
     actual = generate_diff(file1_path, file2_path)
 
     assert actual == expected
+
+
+def test_generate_diff_flat_yaml():
+    file1_path = get_data_path('file1.yml')
+    file2_path = get_data_path('file2.yaml')
+
+    expected = read_file('result_stylish.txt')
+
+    actual = generate_diff(file1_path, file2_path)
+
+    assert actual == expected

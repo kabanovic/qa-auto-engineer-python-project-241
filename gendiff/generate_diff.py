@@ -1,32 +1,45 @@
-import json
+import os
+
+from gendiff.formatters.stylish import make_stylish
+from gendiff.parser import parse
 
 
-def to_str(value):
-    if isinstance(value, bool):
-        return str(value).lower()
-    return str(value)
+def get_data(file_path):
+    format_name = os.path.splitext(file_path)[1][1:].lower()
+
+    with open(file_path, 'r') as file:
+        content = file.read()
+
+    return parse(content, format_name)
 
 
-def generate_diff(file_path1, file_path2):
-    with open(file_path1, 'r') as f1:
-        data1 = json.load(f1)
-    with open(file_path2, 'r') as f2:
-        data2 = json.load(f2)
-
+def build_diff(data1, data2):
     keys = data1.keys() | data2.keys()
     sorted_keys = sorted(keys)
+    diff = []
 
-    result = []
     for key in sorted_keys:
         if key in data1 and key not in data2:
-            result.append(f"  - {key}: {to_str(data1[key])}")
-        elif key in data2 and key not in data1:
-            result.append(f"  + {key}: {to_str(data2[key])}")
+            diff.append({'key': key, 'type': 'deleted', 'value': data1[key]})
+        elif key not in data1 and key in data2:
+            diff.append({'key': key, 'type': 'added', 'value': data2[key]})
         elif data1[key] != data2[key]:
-            result.append(f"  - {key}: {to_str(data1[key])}")
-            result.append(f"  + {key}: {to_str(data2[key])}")
+            diff.append({
+                'key': key,
+                'type': 'changed',
+                'old_value': data1[key],
+                'new_value': data2[key]
+            })
         else:
-            result.append(f"    {key}: {to_str(data1[key])}")
+            diff.append({'key': key, 'type': 'unchanged', 'value': data1[key]})
 
-    inner_text = '\n'.join(result)
-    return f"{{\n{inner_text}\n}}"
+    return diff
+
+
+def generate_diff(file_path1, file_path2, format_name='stylish'):
+    data1 = get_data(file_path1)
+    data2 = get_data(file_path2)
+
+    diff = build_diff(data1, data2)
+
+    return make_stylish(diff)
