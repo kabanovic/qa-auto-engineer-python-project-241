@@ -50,3 +50,21 @@ def test_generate_diff_plain_yaml():
 
     actual = generate_diff(file1_path, file2_path, 'plain')
     assert actual == expected
+
+
+def test_generate_diff_json_format():
+    file1_path = get_data_path('file1.json')
+    file2_path = get_data_path('file2.json')
+    expected = read_file('result_json.json')
+
+    actual = generate_diff(file1_path, file2_path, 'json')
+    assert actual == expected
+
+
+def test_generate_diff_json_yaml():
+    file1_path = get_data_path('file1.yml')
+    file2_path = get_data_path('file2.yaml')
+    expected = read_file('result_json.json')
+
+    actual = generate_diff(file1_path, file2_path, 'json')
+    assert actual == expected

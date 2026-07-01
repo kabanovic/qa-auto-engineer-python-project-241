@@ -15,3 +15,6 @@
 
 ### Generate_diff with plian format
 [![asciicast](https://asciinema.org/a/YnH8RI7R7E6lwXrH.svg)](https://asciinema.org/a/YnH8RI7R7E6lwXrH)
+
+### Generate_diff with json format
+[![asciicast](https://asciinema.org/a/iFEBy2QKBLh2sBhI.svg)](https://asciinema.org/a/iFEBy2QKBLh2sBhI)
