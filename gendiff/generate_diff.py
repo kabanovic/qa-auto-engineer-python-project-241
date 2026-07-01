@@ -1,5 +1,6 @@
 import os
 
+from gendiff.formatters.plain import make_plain
 from gendiff.formatters.stylish import make_stylish
 from gendiff.parser import parse
 
@@ -42,4 +43,9 @@ def generate_diff(file_path1, file_path2, format_name='stylish'):
 
     diff = build_diff(data1, data2)
 
-    return make_stylish(diff)
+    if format_name == 'stylish':
+        return make_stylish(diff)
+    if format_name == 'plain':
+        return make_plain(diff)
+
+    raise ValueError(f"Unknown format: {format_name}")
