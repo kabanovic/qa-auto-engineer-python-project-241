@@ -10,6 +10,38 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=kabanovic_qa-auto-engineer-python-project-241&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=kabanovic_qa-auto-engineer-python-project-241)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kabanovic_qa-auto-engineer-python-project-241&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kabanovic_qa-auto-engineer-python-project-241)
 
+## Установка и запуск
+
+Для установки всех зависимостей выполните:
+
+```bash
+make install
+```
+
+### Использование
+
+Утилита `gendiff` поддерживает три формата вывода (`stylish`, `plain`, `json`) и умеет сравнивать как `.json`, так и `.yaml` / `.yml` файлы.
+
+**1. Формат по умолчанию (stylish):**
+```bash
+uv run gendiff path/to/file1.json path/to/file2.json
+```
+
+**2. Плоский текстовый формат (plain):**
+```bash
+uv run gendiff --format plain path/to/file1.yml path/to/file2.yaml
+```
+
+**3. Структурированный формат (json):**
+```bash
+uv run gendiff --format json path/to/file1.json path/to/file2.yaml
+```
+
+### Справка
+```bash
+uv run gendiff -h
+```
+
 ### Generate_diff with default format
 [![asciicast](https://asciinema.org/a/TOzDjUmMhG0xmwzl.svg)](https://asciinema.org/a/TOzDjUmMhG0xmwzl)
 
